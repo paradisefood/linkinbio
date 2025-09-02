@@ -1,286 +1,417 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paradise Food - Link In Bio</title>
+    <title>Dapur Paradise - Lin In Bio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="https://i.postimg.cc/tTz7CKVH/logoparadise.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Poppins', sans-serif;
+        :root {
+            --primary: #e63946;
+            --secondary: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1d3557;
+            --light: #f8f9fa;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
         }
-        
-        .card-hover {
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.9), rgba(168, 218, 220, 0.8)), url('https://i.postimg.cc/3wQgDQhF/background.jpg') center/cover;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+        .btn-primary:hover {
+            background: #c1121f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
         }
-        
-        .food-image {
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-        
-        .food-image:hover {
-            transform: scale(1.05);
+
+        .menu-card:hover {
+            transform: translateY(-5px);
         }
-        
-        .floating-button {
-            animation: float 3s ease-in-out infinite;
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #f56565 0%, #ed8936 100%);
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        .telegram-btn {
+            background: linear-gradient(135deg, #0088cc, #005580);
+            color: white;
+        }
+
+        .group-btn {
+            background: linear-gradient(135deg, #7289da, #4e5d94);
+            color: white;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+
+<body>
     <!-- Header Section -->
-    <header class="gradient-bg text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white border-opacity-30 overflow-hidden shadow-2xl">
-                <img src="https://i.postimg.cc/tTz7CKVH/logoparadise.png" alt="Logo Restoran Nusantara dengan desain modern dan elegan menggunakan warna merah dan emas" class="w-full h-full object-cover">
-            </div>
-            <h1 class="text-4xl font-bold mb-2">Dapur Paradise</h1>
-            <p class="text-xl opacity-90">Makan Enak Harga Hemat!</p>
-            <div class="flex justify-center space-x-2 mt-4">
-                <span class="text-yellow-300"><i class="fas fa-star"></i></span>
-                <span class="text-white">4.9 (0.423k reviews)</span>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="https://i.postimg.cc/qMJYdkrC/logo.png"
+                        alt="Logo Restoran Delicious Cuisine dengan desain elegan dan modern" class="rounded-full mr-3">
+                    <div>
+                        <h1 class="text-2xl font-bold text-[--primary]">Dapur Paradise</h1>
+                        <p class="text-sm text-gray-600">Makan Enak Harga Hemat!</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-gray-700 hover:text-[--primary] font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-[--primary] font-medium">About</a>
+                    <a href="#menu" class="text-gray-700 hover:text-[--primary] font-medium">Menu</a>
+                    <a href="#catering" class="text-gray-700 hover:text-[--primary] font-medium">Catering</a>
+                    <a href="#contact" class="text-gray-700 hover:text-[--primary] font-medium">Contact</a>
+                </nav>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 max-w-2xl">
-        <!-- Quick Actions -->
-        <div class="grid grid-cols-2 gap-4 mb-8">
-            <a href="https://catalog.daftarmenu.com/dapur-paridese" class="bg-white rounded-xl p-4 text-center card-hover shadow-lg border border-gray-100">
-                <div class="text-3xl text-red-500 mb-2"><i class="fas fa-utensils"></i></div>
-                <p class="font-semibold">Lihat Menu</p>
-            </a>
-            <a href="https://t.me/dapurparadisekps" class="bg-white rounded-xl p-4 text-center card-hover shadow-lg border border-gray-100">
-                <div class="text-3xl text-green-500 mb-2"><i class="fas fa-phone"></i></div>
-                <p class="font-semibold">Pesan Sekarang</p>
-            </a>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Menyajikan makanan & cemilan Indonesia!</h1>
+            <p class="text-xl md:text-2xl mb-8">KAMI SIAP ANTAR SELURUH KPS - OPEN DAILY 24 HOURS</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#menu" class="btn-primary">
+                    <i class="fas fa-utensils"></i> Lihat Menu
+                </a>
+                <a href="#catering" class="btn-outline text-white border-white">
+                    <i class="fas fa-calendar-alt"></i> Catering Bulanan
+                </a>
+            </div>
         </div>
+    </section>
 
-        <!-- Links Section -->
-        <div class="space-y-4 mb-8">
-            <!-- Order Online -->
-            <a href="https://t.me/dapurparadise" class="bg-white rounded-xl p-6 flex items-center justify-between card-hover shadow-lg border border-gray-100 hover:border-red-200">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fas fa-shopping-cart text-red-500 text-xl"></i>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[--dark] mb-4">Tentang Kami</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Sejak dibuka pada tahun 2025, Dapur Paradise telah menjadi tempat favorit bagi penduduk lokal dan wisatawan untuk menikmati pengalaman makanan yang autentik. Kini, dengan Chef Steven sebagai pemimpin, kami menantikan Anda dengan ide-ide inovatif.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-[--accent] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cutlery text-3xl text-[--dark]"></i>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-lg">Pesan Online</h3>
-                        <p class="text-gray-600">Dine-In, Delivery & Takeaway</p>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-2"><b>DINE-IN</b></h3>
+                    <p class="text-gray-600">Menyediakan makan di tempat, dibawa pulang atau pesan antar.</p>
                 </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-            </a>
-
-            <!-- Location -->
-            <a href="https://maps.app.goo.gl/TWxMH3JVrWWPvvyj6" target="_blank" class="bg-white rounded-xl p-6 flex items-center justify-between card-hover shadow-lg border border-gray-100 hover:border-blue-200">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fas fa-map-marker-alt text-blue-500 text-xl"></i>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-[--accent] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-3xl text-[--dark]"></i>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-lg">Lokasi Kami</h3>
-                        <p class="text-gray-600">Ekareach Street 100, Preah Sihanouk</p>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-2"><b>OPEN 24 JAM</b></h3>
+                    <p class="text-gray-600">Kini buka setiap hari memudahkan kamu pesan makan kapanpun.</p>
                 </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-            </a>
-
-            <!-- Operating Hours -->
-            <div class="bg-white rounded-xl p-6 card-hover shadow-lg border border-gray-100">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fas fa-clock text-yellow-500 text-xl"></i>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-[--accent] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-truck text-3xl text-[--dark]"></i>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-lg">Jam Operasional</h3>
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <div class="flex justify-between">
-                        <span>Buka Setiap Hari</span>
-                        <span class="font-semibold">24 Jam</span>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-2"><b>FREE DELIVERY</b></h3>
+                    <p class="text-gray-600">Layanan antar gratis untuk area tertentu dengan minimum pemesanan.</p>
                 </div>
             </div>
-
-            <!-- Gallery -->
-            <a href="#gallery" class="bg-white rounded-xl p-6 flex items-center justify-between card-hover shadow-lg border border-gray-100 hover:border-purple-200">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fas fa-images text-purple-500 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-lg">Gallery Makanan</h3>
-                        <p class="text-gray-600">Lihat hidangan kami</p>
-                    </div>
-                </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-            </a>
         </div>
+    </section>
 
-        <!-- Menu Section -->
-        <section id="menu" class="mb-8">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Menu Populer</h2>
-            <div class="grid gap-4">
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
-                    <div class="relative">
-                        <img src="https://i.postimg.cc/Dy6QYNCH/IMG-27388.jpg" alt="Nasi Goreng Special dengan telur mata sapi, ayam suwir, dan kerupuk di atas piring keramik putih" class="w-full h-48 object-cover food-image">
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            KHR 14.000
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[--dark] mb-4">Menu Spesial Kami</h2>
+                <p class="text-lg text-gray-600">Pilihan hidangan terbaik yang selalu dinanti pelanggan kami</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="menu-card">
+                    <img src="https://i.postimg.cc/ZR1Y0V8X/sate.jpg"
+                        alt="Nasi Campur Special dengan berbagai lauk pauk tradisional dan sambal segar"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Sate Paradise</h3>
+                        <p class="text-gray-600 mb-4">Perpaduan sempurna potongan lontong dengan ayam, dan bumbu kacang yang khas, sayur dan kerupuk.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[--primary]">KHR 14.000</span>
+                            <button
+                                class="bg-[--primary] text-white px-4 py-2 rounded-lg hover:bg-[#c1121f]">Pesan</button>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-2">Nasi Goreng Paradise</h3>
-                        <p class="text-gray-600 mb-3">Nasi goreng dengan toping seafood, telur, dan kerupuk</p>
-                        <button class="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors">
-                            <a href="https://t.me/dapurparadise" target="_blank">Pesan Sekarang</a>
-                        </button>
-                    </div>
                 </div>
-
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
-                    <div class="relative">
-                        <img src="https://i.postimg.cc/RhRty3TK/IMG-2738.jpg" alt="Sate Ayam dengan bumbu kacang kental disajikan di atas piring daun pisang dengan lontong dan bawang goreng" class="w-full h-48 object-cover food-image">
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            KHR 10.000
+                <div class="menu-card">
+                    <img src="https://i.postimg.cc/y8bd3mzh/nasi-goreng-paradise.jpg"
+                        alt="Catering Prasmanan untuk acara dengan berbagai menu komplit dan presentasi menarik"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Nasi Goreng Paradise</h3>
+                        <p class="text-gray-600 mb-4">Menu favorit dari pelanggan kami special bumbu yang berbeda dari yang lain, (paket sudah termasuk toping telur & seafood).</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[--primary]">KHR 10.000</span>
+                            <button
+                                class="bg-[--primary] text-white px-4 py-2 rounded-lg hover:bg-[#c1121f]">Pesan</button>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-2">Mie Tektek</h3>
-                        <p class="text-gray-600 mb-3">Paduan cita rasa bumbu yang khas dari kami</p>
-                        <button class="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors">
-                            <a href="https://t.me/dapurparadise" target="_blank">Pesan Sekarang</a>
-                        </button>
+                </div>
+                <div class="menu-card">
+                    <img src="https://i.postimg.cc/W1c4jNTj/soto-ayam.jpg"
+                        alt="Kue Tradisional Indonesia dengan berbagai varian warna dan rasa autentik"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Soto Medan</h3>
+                        <p class="text-gray-600 mb-4">Kuah santan kuning kaya rempah, berisi suwiran ayam, perkedel, dan telur rebus. Rasanya gurih, pedas, dan bikin nagih!</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[--primary]">KHR 12.000</span>
+                            <button
+                                class="bg-[--primary] text-white px-4 py-2 rounded-lg hover:bg-[#c1121f]">Pesan</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://i.postimg.cc/s2HNr27g/risol.jpg"
+                        alt="Koleksi kue tradisional Indonesia yang dibuat dengan resep asli dan bahan premium."
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Risol Juara</h3>
+                        <p class="text-gray-600 mb-4">Koleksi kue tradisional Indonesia yang dibuat dengan resep asli dan bahan premium.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[--primary]">KHR 5.000</span>
+                            <button
+                                class="bg-[--primary] text-white px-4 py-2 rounded-lg hover:bg-[#c1121f]">Pesan</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="mb-8">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Gallery Makanan</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="relative group overflow-hidden rounded-xl">
-                    <img src="https://i.postimg.cc/Njf0pJVN/IMG-2710.jpg" alt="Rendang daging sapi dengan kuah kental dan kemerah-merahan disajikan di mangkuk kayu dengan nasi putih" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-semibold">Sate Paradise</span>
-                    </div>
+    <!-- Catering Section -->
+    <section id="catering" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[--dark] mb-4">Catering Bulanan</h2>
+                <p class="text-lg text-gray-600">Solusi praktis untuk kebutuhan makan harian kantor, atau keluarga.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://i.postimg.cc/rwSVs1sP/catering.jpg"
+                        alt="Paket catering bulanan dengan kotak makan rapi dan berbagai menu sehat"
+                        class="rounded-lg shadow-xl">
                 </div>
-                <div class="relative group overflow-hidden rounded-xl">
-                    <img src="https://i.postimg.cc/K8zZnKkw/IMG-2713.jpg" alt="Gado-gado dengan sayuran segar dan bumbu kacang kental disajikan di piring keramik dengan kerupuk" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-semibold">Ayam Fillet</span>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Keuntungan Catering Bulanan</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div
+                                class="w-8 h-8 bg-[--accent] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check text-[--dark]"></i>
+                            </div>
+                            <p>Menu bervariasi setiap hari, tidak membuat bosan</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="w-8 h-8 bg-[--accent] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check text-[--dark]"></i>
+                            </div>
+                            <p>Harga khusus untuk langganan bulanan</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="w-8 h-8 bg-[--accent] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check text-[--dark]"></i>
+                            </div>
+                            <p>Gratis konsultasi menu sesuai kebutuhan</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="w-8 h-8 bg-[--accent] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check text-[--dark]"></i>
+                            </div>
+                            <p>Layanan antar tepat waktu</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relative group overflow-hidden rounded-xl">
-                    <img src="https://i.postimg.cc/y6yBth02/photo-2025-08-28-11-00-29.jpg" alt="Soto Ayam dengan kuah kuning disajikan dalam mangkuk dengan suwiran ayam, telur, dan seledri" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-semibold">Sup Ayam</span>
-                    </div>
-                </div>
-                <div class="relative group overflow-hidden rounded-xl">
-                    <img src="https://i.postimg.cc/76NcsVjV/1-39.jpg" alt="Es Cendol dengan santan dan gula merah disajikan dalam gelas tinggi dengan es serut" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-semibold">Pastel Kari</span>
+                    <div class="mt-8">
+                        <a href="https://t.me/dapurparadisekps" class="btn-primary">
+                            <i class="fas fa-calendar-check"></i> Konsultasi Gratis
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section class="bg-white rounded-xl p-6 shadow-lg mb-8">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Hubungi Kami</h2>
-            <div class="space-y-4">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fas fa-phone text-red-500"></i>
-                    </div>
-                    <div>
-                        <p class="font-semibold">Telepon</p>
-                        <a href="https://t.me/dapurparadisekps" class="text-red-500">+855 96 975 2589</a>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fas fa-envelope text-blue-500"></i>
-                    </div>
-                    <div>
-                        <p class="font-semibold">Email</p>
-                        <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=dapurparadisekps@gmail.com" class="text-blue-500">dapurparadisekps@gmail.com</a>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fab fa-whatsapp text-green-500"></i>
-                    </div>
-                    <div>
-                        <p class="font-semibold">WhatsApp</p>
-                        <a href="https://wa.me/855962174640" class="text-green-500">+855 96 217 4640</a>
-                    </div>
-                </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[--dark] mb-4">Hubungi Kami</h2>
+                <p class="text-lg text-gray-600">Pesan sekarang atau konsultasi kebutuhan catering Anda.</p>
             </div>
-        </section>
 
-        <!-- Social Media -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Ikuti Kami</h2>
-            <div class="grid grid-cols-4 gap-4">
-                <a href="https://t.me/dapurparadisekps" class="bg-white rounded-xl p-4 text-center card-hover shadow-lg border border-gray-100 hover:border-blue-300">
-                    <i class="fab fa-instagram text-pink-500 text-2xl mb-2"></i>
-                    <p class="text-sm font-semibold">Instagram</p>
+            <div class="max-w-md mx-auto space-y-4 mb-12">
+                <a href="https://wa.me/855962174640" class="social-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>WhatsApp: +855 96 217 4640</span>
                 </a>
-                <a href="web.facebook.com/groups/dapurparadise/" class="bg-white rounded-xl p-4 text-center card-hover shadow-lg border border-gray-100 hover:border-blue-400">
-                    <i class="fab fa-facebook text-blue-600 text-2xl mb-2"></i>
-                    <p class="text-sm font-semibold">Facebook</p>
+
+                <a href="https://t.me/dapurparadisekps" class="social-btn telegram-btn">
+                    <i class="fab fa-telegram text-2xl"></i>
+                    <span>Telegram: @dapurparadisekps</span>
                 </a>
-                <a href="https://www.tiktok.com/@dapurparadisekps?_t=ZT-8y4eGY7XKda&_r=1" class="bg-white rounded-xl p-4 text-center card-hover shadow-lg border border-gray-100 hover:border-blue-300">
-                    <i class="fab fa-tiktok text-black text-2xl mb-2"></i>
-                    <p class="text-sm font-semibold">TikTok</p>
-                </a>
-                <a href="https://t.me/dapurparadisekps" class="bg-white rounded-xl p-4 text-center card-hover shadow-lg border border-gray-100 hover:border-red-300">
-                    <i class="fab fa-youtube text-red-600 text-2xl mb-2"></i>
-                    <p class="text-sm font-semibold">YouTube</p>
+
+                <a href="https://t.me/dapurparadise" class="social-btn group-btn">
+                    <i class="fas fa-users text-2xl"></i>
+                    <span>Join Group Telegram Kami</span>
                 </a>
             </div>
-        </section>
-    </main>
 
-    <!-- Floating Action Button -->
-    <div class="fixed bottom-6 right-6">
-        <a href="https://wa.me/855962174640" class="floating-button bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition-colors">
-            <i class="fab fa-whatsapp text-2xl"></i>
-        </a>
-    </div>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="testimonial-card">
+                    <div class="w-16 h-16 bg-[--accent] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-2xl text-[--dark]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Lokasi</h3>
+                    <p class="text-gray-600">Ekareach Street 100, Preah Sihanouk</p>
+                    <p class="text-gray-600">Buka: 24 HOURS</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="w-16 h-16 bg-[--accent] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-2xl text-[--dark]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Telepon</h3>
+                    <p class="text-gray-600">(096) 217 4640</p>
+                    <p class="text-gray-600">Customer Service</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="w-16 h-16 bg-[--accent] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-2xl text-[--dark]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-gray-600">@dapurparadisekps</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4 text-center">
-            <p class="mb-4">Copyright © 2025 Dapur Paradise | All rights reserved.</p>
+            <p class="mb-4">Copyright © 2025 <b>Dapur Paradise</b> | All rights reserved.</p>
             <div class="flex justify-center space-x-4">
                 <a href="https://t.me/dapurparadisekps" class="text-gray-400 hover:text-white transition-colors">
                     <i class="fab fa-instagram"></i>
@@ -294,54 +425,3 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add to cart functionality
-        document.querySelectorAll('button').forEach(button => {
-            if (button.textContent.includes('Pesan Sekarang')) {
-                button.addEventListener('click', function() {
-                    const foodName = this.parentElement.querySelector('h3').textContent;
-                    alert(`Terima kasih! ${foodName} telah ditambahkan ke keranjang.`);
-                });
-            }
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards for animation
-        document.querySelectorAll('.card-hover').forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-    </script>
-</body>
-</html>
