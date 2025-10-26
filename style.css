@@ -1,0 +1,613 @@
+/* Reset CSS Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #A31F34; /* Merah Marun/Coklat Tua - Warna Utama Restoran */
+    --secondary-color: #FFC300; /* Kuning Keemasan - Warna Aksen/Highlight */
+    --text-color: #333;
+    --light-bg: #F9F9F9;
+    --dark-bg: #1A1A1A;
+    --white: #FFFFFF;
+    --padding-section: 80px 0;
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+    /* Custom Scrollbar */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--primary-color) var(--light-bg); /* Firefox */
+}
+
+/* Custom Scrollbar untuk Webkit (Chrome, Safari) */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+body::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    border: 3px solid var(--light-bg);
+}
+
+
+/* Layout Umum */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: var(--padding-section);
+    opacity: 0; /* Untuk Animasi Fade-in di JS */
+    transform: translateY(20px); /* Untuk Animasi Slide-up di JS */
+    transition: opacity 1s ease, transform 1s ease;
+}
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+p.subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.1em;
+    color: #666;
+}
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+}
+a:hover {
+    color: #a31f34;
+}
+
+/* Tombol */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    border: none;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+.btn-primary:hover {
+    background-color: #8D1B2D;
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid var(--primary-color);
+}
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+.btn-order {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+.btn-order:hover {
+    background-color: #FFD54F;
+    transform: scale(1.05);
+}
+
+/* Navigasi Header */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.logo span {
+    color: var(--secondary-color);
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+.nav-links li {
+    margin-left: 30px;
+}
+.nav-links a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: width var(--transition-speed);
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* 1. Hero Section */
+.hero-section {
+    background: url('https://i.postimg.cc/rwSVs1sP/catering.jpg') center/cover no-repeat;
+    color: var(--white);
+    text-align: center;
+    padding: 150px 0;
+    position: relative;
+    overflow: hidden;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+}
+.hero-section .container {
+    position: relative;
+    z-index: 10;
+}
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+.cta-buttons a {
+    margin: 0 10px;
+}
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    background-color: rgba(163, 31, 52, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+}
+.stat-item {
+    text-align: center;
+}
+.stat-number {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+}
+.stat-item p {
+    margin: 0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+/* 2. Menu Online */
+.menu-section {
+    background-color: var(--light-bg);
+}
+.menu-tabs {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.tab-button {
+    background: var(--white);
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.tab-button.active, .tab-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.menu-item {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    transform: scale(1);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: none; /* Default tersembunyi, diatur di JS */
+}
+.menu-item.active {
+    display: block;
+}
+.menu-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.menu-item h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    position: relative;
+}
+.menu-item p {
+    padding: 0 15px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 15px;
+}
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.7em;
+    font-weight: bold;
+    margin-left: 5px;
+    vertical-align: top;
+}
+.popular {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* 3. Catering Section */
+.catering-section {
+    background-color: var(--white);
+}
+.catering-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.catering-package {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+.catering-package:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(163, 31, 52, 0.15);
+}
+.catering-package.popular {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 20px rgba(255, 195, 0, 0.4);
+}
+.package-header h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+.price-tag {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 25px;
+}
+.catering-package ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+.catering-package ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.catering-package ul li:last-child {
+    border-bottom: none;
+}
+.catering-package ul li i.fa-check-circle {
+    color: #4CAF50; /* Hijau */
+    margin-right: 10px;
+}
+.catering-package ul li i.fa-times-circle {
+    color: #F44336; /* Merah */
+    margin-right: 10px;
+}
+.popular-label {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    vertical-align: top;
+}
+
+/* 4. About Section */
+.about-section .container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+}
+.about-content {
+    flex: 1;
+}
+.about-content h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.about-content p {
+    margin-bottom: 30px;
+}
+.about-image {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 10s ease-in-out; /* Animasi Zoom Halus */
+}
+.about-image:hover img {
+    transform: scale(1.1);
+}
+
+/* 5. Contact Section */
+.contact-section {
+    background-color: var(--light-bg);
+}
+.contact-grid {
+    display: flex;
+    gap: 40px;
+}
+.contact-info, .contact-form-container {
+    flex: 1;
+    padding: 30px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.contact-info h3, .contact-form-container h3 {
+    text-align: left;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+.contact-info p {
+    margin-bottom: 15px;
+}
+.contact-info p i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+.btn-whatsapp-direct {
+    background-color: #25D366; /* Warna WhatsApp */
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+}
+.btn-whatsapp-direct:hover {
+    background-color: #1DA851;
+    color: var(--white);
+}
+
+/* Form Kontak */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+.form-group textarea {
+    resize: vertical;
+}
+.btn-form {
+    width: 100%;
+    background-color: #25D366; 
+}
+.btn-form:hover {
+    background-color: #1DA851;
+}
+.form-note {
+    font-size: 0.85em;
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* Footer Komprehensif */
+footer {
+    background-color: var(--dark-bg);
+    color: #ccc;
+    padding: 40px 0;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.footer-brand, .footer-links, .footer-social {
+    flex-basis: calc(33.33% - 20px);
+}
+.footer-brand .logo {
+    color: var(--white);
+}
+.footer-brand p {
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+.footer-links h4, .footer-social h4 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+.footer-links ul {
+    list-style: none;
+}
+.footer-links li {
+    margin-bottom: 8px;
+}
+.footer-links a {
+    color: #ccc;
+    transition: color var(--transition-speed);
+}
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.social-icons a {
+    font-size: 1.5em;
+    color: var(--white);
+    transition: color var(--transition-speed), transform var(--transition-speed);
+}
+.social-icons a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+.alamat-footer {
+    font-size: 0.9em;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .hero-section {
+        padding: 100px 0;
+    }
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .nav-links {
+        display: none; /* Menyembunyikan link di mobile, bisa diganti dengan menu hamburger */
+    }
+    header .container {
+        justify-content: center;
+    }
+    
+    .menu-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .tab-button {
+        margin: 5px;
+        flex: 1 1 40%;
+    }
+    .about-section .container, .contact-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-content, .about-image, .contact-info, .contact-form-container {
+        flex-basis: 100%;
+        text-align: center;
+    }
+    .about-content h2, .contact-info h3, .contact-form-container h3 {
+        text-align: center;
+    }
+    .contact-info p {
+        text-align: left; /* Biarkan info kontak tetap rapi */
+        padding-left: 20px;
+    }
+    .btn-whatsapp-direct {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-brand, .footer-links, .footer-social {
+        flex-basis: 100%;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
