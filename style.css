@@ -75,11 +75,11 @@ p.subtitle {
 }
 a {
     text-decoration: none;
-    color: var(--primary-color);
+    color: #8D1B2D;
     transition: color var(--transition-speed);
 }
 a:hover {
-    color: #a31f34;
+    color: #000000;
 }
 
 /* Tombol */
@@ -94,25 +94,25 @@ a:hover {
     cursor: pointer;
 }
 .btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: #8D1B2D;
+    color: #ffffff;
 }
 .btn-primary:hover {
-    background-color: #8D1B2D;
+    background-color: #FFD54F;
     transform: translateY(-2px);
 }
 .btn-secondary {
     background-color: transparent;
-    color: #ffffff;
-    border: 2px solid var(--primary-color);
+    color: #FFD54F;
+    border: 2px solid #ffffff;
 }
 .btn-secondary:hover {
-    background-color: var(--primary-color);
+    background-color: #8D1B2D;
     color: var(--white);
     transform: translateY(-2px);
 }
 .btn-order {
-    background-color: var(--secondary-color);
+    background-color: #FFD54F;
     color: var(--text-color);
     padding: 8px 15px;
     font-size: 0.9em;
@@ -124,9 +124,9 @@ a:hover {
 
 /* Navigasi Header */
 header {
-    background-color: var(--white);
+    background-color: #ffffff;
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px #0000001a;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -136,14 +136,6 @@ header .container {
     justify-content: space-between;
     align-items: center;
 }
-.logo {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-.logo span {
-    color: var(--secondary-color);
-}
 .nav-links {
     list-style: none;
     display: flex;
@@ -152,13 +144,13 @@ header .container {
     margin-left: 30px;
 }
 .nav-links a {
-    color: var(--text-color);
+    color: #000000;
     font-weight: 500;
     padding: 5px 0;
     position: relative;
 }
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: #FFC300;
 }
 .nav-links a::after {
     content: '';
@@ -167,7 +159,7 @@ header .container {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--secondary-color);
+    background-color: #FFC300;
     transition: width var(--transition-speed);
 }
 .nav-links a:hover::after {
@@ -529,7 +521,7 @@ footer {
     transition: color var(--transition-speed);
 }
 .footer-links a:hover {
-    color: var(--secondary-color);
+    color: #FFC300;
 }
 .social-icons {
     display: flex;
@@ -542,7 +534,7 @@ footer {
     transition: color var(--transition-speed), transform var(--transition-speed);
 }
 .social-icons a:hover {
-    color: var(--secondary-color);
+    color: #FFC300;
     transform: translateY(-3px);
 }
 .alamat-footer {
